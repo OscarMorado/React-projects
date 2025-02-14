@@ -11,4 +11,4 @@ export const getLiderById = (id) => lideres.find((lider) => lider.id === id); //
 
 
 export const getLiderByGroup = (group) => lideres.filter((lider) => lider.group === group); 
-//console.log(getLiderByGroup('Aqours'));
+console.log(getLiderByGroup('Aqours'));

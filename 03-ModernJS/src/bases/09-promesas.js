@@ -18,7 +18,7 @@ import {getLiderById} from './bases/08-imp-exp'
 // .catch(err => console.warn(err));
 
 
-const getHeroeByIdAsync = (id) => {
+const getLiderByIdAsync = (id) => {
     return new Promise((resolve, reject) => { 
         setTimeout(() => {
     
