@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { miembros } from "../data/Members";
+import PropTypes from "prop-types";
 
 export const AddCategory = ({onNewCategory}) => {
 
@@ -8,11 +9,14 @@ export const AddCategory = ({onNewCategory}) => {
 
     const getMiembro = (nombre) => { //Valida que el nombre ingresado en el input coincida con uno de los nombres del archivo 'miembros'
 
-        const nameFormat = (str) =>
-            str
+        const nameFormat = (str) => {
+            if (!nombre || typeof nombre !== "string") return null;
+
+            return str
                 .split(" ")
                 .map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase())
                 .join(" ")
+        };
 
         // return Object.values(miembros[0]).some((miembro) => miembro.some((miembro) => miembro.includes(nameFormat(nombre))));  //Devuelve true si se ingresa una sola parte del nombre (nombre o apellido). Devuelve un bool, por lo que se comentó para permitir que se devuelva el miembro como tal
 
@@ -33,9 +37,16 @@ export const AddCategory = ({onNewCategory}) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+
+        if (!inputValue.trim()) {
+            setErrorMessage("Ingresa un valor");
+            return;
+        }
+    
         
         const nombreCompleto = getMiembro(inputValue);
-        if(!getMiembro(nombreCompleto)){
+
+        if(!nombreCompleto){
             setErrorMessage("Ingresa el nombre de una idol de Love Live!");
             console.log(errorMessage);
             return;
@@ -47,8 +58,8 @@ export const AddCategory = ({onNewCategory}) => {
     }
 
     return (
-        <form onSubmit = {onSubmit}>
-            <p>{errorMessage}</p>
+        <form onSubmit = {onSubmit} aria-label="form">
+            <p data-testid="error">{errorMessage}</p>
             <input
                 type = "text"
                 placeholder = "Busca otro miembro!"
@@ -57,6 +68,10 @@ export const AddCategory = ({onNewCategory}) => {
             />
         </form>
     )
+}
+
+AddCategory.propTypes ={
+    onNewCategory: PropTypes.func.isRequired,
 }
 
 
