@@ -1,4 +1,4 @@
-const apiKey = 'DyIjrsP59v8zWd9GQVZz0yVg6UXN6Mz2';
+const apiKey = import.meta.env.VITE_API_KEY_GIPHY;
 
 const peticion = fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`)
 
