@@ -2,7 +2,7 @@ const getImage = async() => { //Convertir una función normal en una promesa má
 
 
     try {
-        const apiKey = 'DyIjrsP59v8zWd9GQVZz0yVg6UXN6Mz2';
+        const apiKey = 'Place the API key here';
         const respuesta = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`)
         const {data} = await respuesta.json();
 
