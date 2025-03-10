@@ -1,5 +1,5 @@
 export const getGifs = async(category) => {
-    const url = `https://tenor.googleapis.com/v2/search?q=${category}&key=AIzaSyApEXbEcyMhYfmBq0hkSpycH-pTfo8bqrA&limit=8&random=true`;
+    const url = `https://tenor.googleapis.com/v2/search?q=${category}&key=PlaceYourAPIKeylimit=8&random=true`;
     const resp = await fetch(url);
     // console.log("Response: " + resp);
 
